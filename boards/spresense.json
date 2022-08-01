@@ -1,0 +1,47 @@
+{
+  "build": {
+    "core": "spresense",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DARDUINO_spresense_ast",
+    "f_cpu": "156000000L",
+    "mcu": "gd32w515tiq6",
+    "hwids": [
+      [
+        "0x10C4",
+        "0xEA60"
+      ]
+    ],
+    "variant": "spresense_ast"
+  },
+  "debug": {
+    "openocd_target": "cxd5602",
+    "svd_path": "cxd5602.svd",
+    "default_tools": [
+      "stlink"
+    ]
+  },
+  "frameworks": [
+    "spl"
+  ],
+  "name": "SPresense (1.5MB RAM, 768K Flash)",
+  "upload": {
+    "disable_flushing": false,
+    "maximum_ram_size": 786432,
+    "maximum_size": 786432,
+    "protocol": "serial",
+    "protocols": [
+      "jlink",
+      "cmsis-dap",
+      "stlink",
+      "blackmagic",
+      "serial"
+    ],
+    "speed": 115200,
+    "resetmethod": "ck",
+    "require_upload_port": true,
+    "use_1200bps_touch": false,
+    "wait_for_upload_port": false
+  },
+  "url": "https://www.sony-semicon.com/en/products/spresense/index.html",
+  "vendor": "Sony"
+}

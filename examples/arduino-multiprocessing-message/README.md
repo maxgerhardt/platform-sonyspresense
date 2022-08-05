@@ -17,7 +17,7 @@ How to build PlatformIO based project
 
 ```shell
 # Change directory to example
-$ cd platform-sonyspresense/examples/arduino-blink
+$ cd platform-sonyspresense/examples/arduino-multiprocessing-message
 
 # Build project
 $ pio run

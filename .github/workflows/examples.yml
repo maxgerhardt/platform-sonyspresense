@@ -25,4 +25,8 @@ jobs:
           pio pkg install --global --platform symlink://.
       - name: Build examples
         run: |
+          if [ "$RUNNER_OS" == "Linux" ]; then
+            apt install libgtk-3-dev
+          fi
           pio run -d ${{ matrix.example }}
+        shell: bash

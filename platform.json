@@ -40,6 +40,12 @@
       "owner": "maxgerhardt",
       "version": "https://github.com/maxgerhardt/spresense-arduino-compatible.git"
     },
+    "tool-arduinosonyspresensesdk": {
+      "type": "framework",
+      "optional": true,
+      "owner": "maxgerhardt",
+      "version": "https://github.com/maxgerhardt/spresense-arduino-sdk-package.git"
+    },
     "tool-openocd": {
       "type": "uploader",
       "optional": true,

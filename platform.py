@@ -26,8 +26,10 @@ class SonyspresensePlatform(PlatformBase):
         board = variables.get("board")
         board_config = self.board_config(board)
         default_protocol = board_config.get("upload.protocol") or ""
-        if variables.get("upload_protocol", default_protocol) == "dfu":
-            self.packages["tool-dfuutil"]["optional"] = False
+        frameworks = variables.get("pioframework", [])
+        # we need the SDK to build the Arduino core
+        if "arduino" in frameworks:
+            self.packages["tool-arduinosonyspresensesdk"]["optional"] = False
 
         return PlatformBase.configure_default_packages(self, variables,
                                                        targets)
@@ -50,8 +52,8 @@ class SonyspresensePlatform(PlatformBase):
         if "tools" not in debug:
             debug["tools"] = {}
 
-        # BlackMagic, J-Link, ST-Link, Sipeed RV Debugger
-        for link in ("blackmagic", "jlink", "stlink", "cmsis-dap", "sipeed-rv-debugger"):
+        # BlackMagic, J-Link, ST-Link, CMSIS-DAP
+        for link in ("blackmagic", "jlink", "stlink", "cmsis-dap"):
             if link not in upload_protocols or link in debug["tools"]:
                 continue
             if link == "blackmagic":
@@ -68,16 +70,11 @@ class SonyspresensePlatform(PlatformBase):
                 else:
                     assert debug.get("openocd_target"), (
                         "Missed target configuration for %s" % board.id)
-                    if link in ftdi_based_links:
-                        server_args.extend([
-                            "-f", "interface/ftdi/%s.cfg" % link,
-                        ])
-                    else:
-                        server_args.extend([
-                            "-f", "interface/%s.cfg" % link,
-                            "-c", "transport select %s" % (
-                                "hla_swd" if link == "stlink" else "swd"),
-                        ])
+                    server_args.extend([
+                        "-f", "interface/%s.cfg" % link,
+                        "-c", "transport select %s" % (
+                            "hla_swd" if link == "stlink" else "swd"),
+                    ])
                     server_args.extend(debug.get("openocd_extra_pre_target_args", []))
                     server_args.extend([
                         "-f", "target/%s.cfg" % debug.get("openocd_target")

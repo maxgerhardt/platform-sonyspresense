@@ -11,7 +11,8 @@
         "0xEA60"
       ]
     ],
-    "variant": "spresense_ast"
+    "variant": "spresense",
+    "ldscript": "ramconfig.ld"
   },
   "debug": {
     "openocd_target": "cxd5602",
@@ -21,7 +22,7 @@
     ]
   },
   "frameworks": [
-    "spl"
+    "arduino"
   ],
   "name": "SPresense (1.5MB RAM, 768K Flash)",
   "upload": {

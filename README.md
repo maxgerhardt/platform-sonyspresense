@@ -2,5 +2,110 @@
 
 ## Description
 
+PlatformIO integration for Sopny Spresense board and Arduino core.
+
 ## Boards
 *  Spresense (Sony CXD5602GG)
+
+## Frameworks
+* [Arduino](https://github.com/sonydevworld/spresense-arduino-compatible)
+
+## Import notes
+
+Currently, `flash_writer.py` is used as a cross-platform way to upload the firmware. This script has a dependency on `wxPython`. If you are on Linux, please execute
+```sh
+sudo apt-get install -y libgtk-3-dev python3-wxgtk4.0
+```
+so that the later `pip install wxPython` will succeed when building a firmware.
+
+We will be looking to drop this huge dependency from the script.
+
+## Build Settings
+
+In the Arduino IDE, you have the following build settings available to you:
+
+![build settings](docs/arduino_settings.png)
+
+These can be replicated in PlatformIO by adding the configuration options to the `platformio.ini` of the project. Note that if there multiple `build_flags` lines, you have to combine the options into one line.
+
+###  Debug
+
+```ini
+; Release: is the default
+; Debug: 
+build_flags = -DPIO_FRAMEWORK_ARDUINO_ENABLE_DEBUG
+```
+
+###  Core
+
+```ini
+; Main Core: is the default
+; SubCore1:
+build_flags = -DPIO_FRAMEWORK_ARDUINO_CORE_SUB_CORE_1
+; SubCore2:
+build_flags = -DPIO_FRAMEWORK_ARDUINO_CORE_SUB_CORE_2
+; SubCore3:
+build_flags = -DPIO_FRAMEWORK_ARDUINO_CORE_SUB_CORE_3
+; SubCore4:
+build_flags = -DPIO_FRAMEWORK_ARDUINO_CORE_SUB_CORE_4
+; SubCore5:
+build_flags = -DPIO_FRAMEWORK_ARDUINO_CORE_SUB_CORE_5
+```
+
+###  Memory
+
+Choose from 
+* 128K (131072)
+* 256K (262144)
+* 384K (393216)
+* 512K (524288)
+* 640K (655360)
+* 768K (786432)
+* 896K (917504)
+* 1024K (1048576)
+* 1152K (1179648)
+* 1280K (1310720)
+* 1408K (1441792)
+* 1536K (1572864)
+
+and input as follows:
+
+```ini
+; 1.5 MByte
+board_upload.maximum_size = 1572864
+board_upload.maximum_ram_size = 1572864
+```
+###  Upload speed
+
+```ini
+; 115200 is the default
+; use 921600
+upload_speed = 921600
+```
+###  Upload port
+
+```ini
+; is auto-detected by default
+; use specific port
+upload_port = COM7
+```
+
+### Example
+
+```ini
+[env:spresense]
+platform = sonyspresense
+board = spresense
+framework = arduino
+build_flags = 
+  -DPIO_FRAMEWORK_ARDUINO_ENABLE_DEBUG
+  -DPIO_FRAMEWORK_ARDUINO_CORE_SUB_CORE_1
+board_upload.maximum_size = 1572864
+board_upload.maximum_ram_size = 1572864
+upload_speed = 921600
+upload_port = COM7
+; for serial monitor
+monitor_speed = 115200
+```
+
+For more options, see [PlatformIO documentation](https://docs.platformio.org/en/latest/projectconf/section_env.html#working-env-name),

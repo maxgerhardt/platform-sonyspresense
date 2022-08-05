@@ -361,7 +361,7 @@ def install_python_deps():
                     '"$PYTHONEXE" -m pip install -U --force-reinstall '
                     + " ".join(['"%s%s"' % (p, deps[p]) for p in packages_to_install])
                 ),
-                "Installing ESP-IDF's Python dependencies",
+                "Installing Spresense tools's Python dependencies (wxPython)",
             )
         )
 

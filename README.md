@@ -29,6 +29,23 @@ In the PIO Home's platform view for Sony SPresense, you can go into the "Example
 
 ![example](docs/platform_examples.png)
 
+When the import is done, you should have a VSCode project open that has the Arduino Blink example imported into it.
+
+![example-2](docs/new_proj.png)
+
+From there, open the `src/main.cpp` and check that there are no errors shown. (If yes, you might need to execute the "build" task).
+
+In the [project tasks](https://docs.platformio.org/en/latest/integration/ide/vscode.html#project-tasks) then, execute the "Build Task". 
+It should end with "success".
+
+![compile](docs/proj_success.png)
+
+Use the above shown "Upload" task to upload the firmware onto a connected SPresense board, or directly use "Upload and Monitor" to also open the device (serial) monitor after that.
+
+## Special Project Tasks
+
+As shown in the screenshot above, this platform impleemnts the "Erase" and "Burn Bootloader" command also available in the Arduino IDE. The "Erase" command will erase the firmware on the board. The "Burn Bootloader" command will burn the SDK firmwares (`loader.espk`, `gnssfw.espk`, ..) onto the board.
+
 ## Import notes
 
 Currently, `flash_writer.py` is used as a cross-platform way to upload the firmware. This script has a dependency on `wxPython`. If you are on Linux, please execute

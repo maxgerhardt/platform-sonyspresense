@@ -52,8 +52,10 @@ class SonyspresensePlatform(PlatformBase):
         if "tools" not in debug:
             debug["tools"] = {}
 
-        # BlackMagic, J-Link, ST-Link, CMSIS-DAP
-        for link in ("blackmagic", "jlink", "stlink", "cmsis-dap"):
+        # BlackMagic, J-Link, CMSIS-DAP
+        # Note that ST-Link cannot be support because it cannot access an AP other than 0,
+        # and the 6 cores of the chip are all on different APs starting at 3.
+        for link in ("blackmagic", "jlink", "cmsis-dap"):
             if link not in upload_protocols or link in debug["tools"]:
                 continue
             if link == "blackmagic":
@@ -62,24 +64,19 @@ class SonyspresensePlatform(PlatformBase):
                     "require_debug_port": True
                 }
             else:
-                server_args = ["-s", "$PACKAGE_DIR/scripts"]
-                if debug.get("openocd_board"):
-                    server_args.extend([
-                        "-f", "board/%s.cfg" % debug.get("openocd_board")
-                    ])
-                else:
-                    assert debug.get("openocd_target"), (
-                        "Missed target configuration for %s" % board.id)
-                    server_args.extend([
-                        "-f", "interface/%s.cfg" % link,
-                        "-c", "transport select %s" % (
-                            "hla_swd" if link == "stlink" else "swd"),
-                    ])
-                    server_args.extend(debug.get("openocd_extra_pre_target_args", []))
-                    server_args.extend([
-                        "-f", "target/%s.cfg" % debug.get("openocd_target")
-                    ])
-                    server_args.extend(debug.get("openocd_extra_args", []))
+                # add our openocd config files to the search path
+                server_args = ["-s", "$PACKAGE_DIR/scripts", "-s", os.path.join(os.path.dirname(os.path.realpath(__file__)), "misc", "openocd")]
+                assert debug.get("openocd_target"), (
+                    "Missed target configuration for %s" % board.id)
+                server_args.extend([
+                    "-f", "interface/%s.cfg" % link,
+                    "-c", "transport select swd",
+                ])
+                server_args.extend(debug.get("openocd_extra_pre_target_args", []))
+                server_args.extend([
+                    "-f", "%s.cfg" % debug.get("openocd_target")
+                ])
+                server_args.extend(debug.get("openocd_extra_args", []))
 
                 debug["tools"][link] = {
                     "server": {
@@ -88,6 +85,8 @@ class SonyspresensePlatform(PlatformBase):
                         "arguments": server_args
                     }
                 }
+                # todo: add "init_cmds" argument with https://github.com/sonydevworld/spresense/blob/master/sdk/tools/.gdbinit
+                # to get NuttX thread support
             debug["tools"][link]["onboard"] = link in debug.get("onboard_tools", [])
             debug["tools"][link]["default"] = link in debug.get("default_tools", [])
 

@@ -2,7 +2,7 @@
   "build": {
     "core": "spresense",
     "cpu": "cortex-m4",
-    "extra_flags": "-DARDUINO_spresense_ast",
+    "extra_flags": "",
     "f_cpu": "156000000L",
     "mcu": "CXD5602GG",
     "hwids": [

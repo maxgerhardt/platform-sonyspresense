@@ -46,6 +46,11 @@
       "owner": "maxgerhardt",
       "version": "https://github.com/maxgerhardt/spresense-arduino-sdk-package.git"
     },
+    "tool-spresense": {
+      "type": "upload",
+      "owner": "maxgerhardt",
+      "version": "https://github.com/maxgerhardt/spresense-tools-package.git"
+    },
     "tool-openocd": {
       "type": "uploader",
       "optional": true,

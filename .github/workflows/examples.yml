@@ -26,9 +26,7 @@ jobs:
       - name: Install dependencies
         run: |
           if [ "$RUNNER_OS" == "Linux" ]; then
-            sudo apt-get install -y libgtk-3-dev
-            pip install -U wheel
-            pip install -U wxPython
+            sudo apt-get install -y python3-wxgtk4.0
           fi
           pip install -U https://github.com/platformio/platformio/archive/develop.zip
           pio pkg install --global --platform symlink://.

@@ -10,6 +10,25 @@ PlatformIO integration for Sopny Spresense board and Arduino core.
 ## Frameworks
 * [Arduino](https://github.com/sonydevworld/spresense-arduino-compatible)
 
+## Installation
+
+Open a [PlatformIO Core CLI](https://docs.platformio.org/en/latest/integration/ide/vscode.html#platformio-core-cli) and execute
+
+```
+pio pkg install -g -p https://github.com/maxgerhardt/platform-sonyspresense.git
+```
+to install this platform.
+
+In [PIO Home](https://docs.platformio.org/en/latest/integration/ide/vscode.html#platformio-toolbar), you should then have the Sony SPresense platform installed.
+
+![platform](docs/platform_installed.png)
+
+## First Test
+
+In the PIO Home's platform view for Sony SPresense, you can go into the "Examples" tab and import the "arduino-blink" example via the "Import" button.
+
+![example](docs/platform_examples.png)
+
 ## Import notes
 
 Currently, `flash_writer.py` is used as a cross-platform way to upload the firmware. This script has a dependency on `wxPython`. If you are on Linux, please execute

@@ -28,7 +28,7 @@ In [PIO Home](https://docs.platformio.org/en/latest/integration/ide/vscode.html#
 Due to a technicallity with how the Arduino framework's `package.json` is inside a subfolder but pulled from git, regular updating is broken. To update the platform, reinstall it cleanly using
 
 ```sh
-pio pkg uninstall -g -p https://github.com/maxgerhardt/platform-sonyspresense.git
+pio pkg uninstall -g -p sonyspresense
 pio pkg install -g -p https://github.com/maxgerhardt/platform-sonyspresense.git
 ```
 

@@ -2,10 +2,10 @@
 
 ## Description
 
-PlatformIO integration for Sopny Spresense board and Arduino core.
+PlatformIO integration for Sony Spresense board and Arduino core.
 
 ## Boards
-*  Spresense (Sony CXD5602GG)
+*  [Spresense](https://developer.sony.com/develop/spresense/) (Sony CXD5602GG)
 
 ## Frameworks
 * [Arduino](https://github.com/sonydevworld/spresense-arduino-compatible)

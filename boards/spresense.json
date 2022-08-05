@@ -4,7 +4,7 @@
     "cpu": "cortex-m4",
     "extra_flags": "-DARDUINO_spresense_ast",
     "f_cpu": "156000000L",
-    "mcu": "gd32w515tiq6",
+    "mcu": "CXD5602GG",
     "hwids": [
       [
         "0x10C4",

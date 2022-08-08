@@ -53,7 +53,7 @@ Use the above shown "Upload" task to upload the firmware onto a connected SPrese
 
 As reported [here](https://github.com/platformio/platformio-core/issues/4375#issuecomment-1207216969), this should make the LED1 of the board blink.
 
-![vid](https://user-images.githubusercontent.com/93034341/183296726-1c2aec80-e4d5-4289-aba7-34bcabf8c060.MOV)
+https://user-images.githubusercontent.com/26485477/183361207-56f884f8-4e91-459d-8622-6cae8d92af91.MOV
 
 ## Special Project Tasks
 

@@ -51,6 +51,10 @@ It should end with "success".
 
 Use the above shown "Upload" task to upload the firmware onto a connected SPresense board, or directly use "Upload and Monitor" to also open the device (serial) monitor after that.
 
+As reported [here](https://github.com/platformio/platformio-core/issues/4375#issuecomment-1207216969), this should make the LED1 of the board blink.
+
+![vid](https://user-images.githubusercontent.com/93034341/183296726-1c2aec80-e4d5-4289-aba7-34bcabf8c060.MOV)
+
 ## Special Project Tasks
 
 As shown in the screenshot above, this platform impleemnts the "Erase" and "Burn Bootloader" command also available in the Arduino IDE. The "Erase" command will erase the firmware on the board. The "Burn Bootloader" command will burn the SDK firmwares (`loader.espk`, `gnssfw.espk`, ..) onto the board.

@@ -38,13 +38,13 @@
       "type": "framework",
       "optional": true,
       "owner": "maxgerhardt",
-      "version": "https://github.com/maxgerhardt/spresense-arduino-compatible.git"
+      "version": "https://github.com/maxgerhardt/spresense-arduino-compatible.git#3.2.0"
     },
     "tool-arduinosonyspresensesdk": {
       "type": "framework",
       "optional": true,
       "owner": "maxgerhardt",
-      "version": "https://github.com/maxgerhardt/spresense-arduino-sdk-package.git"
+      "version": "https://github.com/maxgerhardt/spresense-arduino-sdk-package.git#3.2.0"
     },
     "tool-spresense": {
       "type": "upload",

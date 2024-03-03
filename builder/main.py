@@ -342,6 +342,7 @@ def install_python_deps():
 
     deps = {
         "wxPython": "==4.2.0",
+        "attrdict3": "==2.0.2"
     }
 
     installed_packages = _get_installed_pip_packages()

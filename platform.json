@@ -49,13 +49,13 @@
     "tool-spresense": {
       "type": "upload",
       "owner": "maxgerhardt",
-      "version": "https://github.com/maxgerhardt/spresense-tools-package.git"
+      "version": "https://github.com/maxgerhardt/spresense-tools-package.git#3.2.0"
     },
     "tool-openocd": {
       "type": "uploader",
       "optional": true,
       "owner": "platformio",
-      "version": "~2.1100.0"
+      "version": "~3.1200.0"
     }
   }
 }

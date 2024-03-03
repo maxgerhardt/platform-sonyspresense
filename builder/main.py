@@ -349,6 +349,7 @@ def install_python_deps():
         return result
 
     deps = {
+        "setuptools": "~69.0.0",
         "wxPython": "==4.2.1"
     }
 

@@ -341,7 +341,7 @@ def install_python_deps():
         return result
 
     deps = {
-        "wxPython": ">=4.1.0",
+        "wxPython": "==4.2.0",
     }
 
     installed_packages = _get_installed_pip_packages()

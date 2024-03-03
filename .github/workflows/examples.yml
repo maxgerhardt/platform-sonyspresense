@@ -14,13 +14,13 @@ jobs:
           - "examples/arduino-multiprocessing-message"
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: "recursive"
       - name: Set up Python
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.9"
+          python-version: "3.10"
       # On Linux, wxPython ("needed" for flash_writer.py)
       # has a dependency on GTK+. Install it here.
       # the tool just uses it to show a EULA dialog,

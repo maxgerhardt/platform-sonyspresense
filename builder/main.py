@@ -318,6 +318,14 @@ if any("-Wl,-T" in f for f in env.get("LINKFLAGS", [])):
 # Install wxPython dependency of tool-spresense
 #
 def install_python_deps():
+    # check if dependencies are installed by just importing them
+    try:
+        import wx
+        import wx.html
+        return
+    except ImportError:
+        print("Spresense tools's Python dependencies (wxPython) not yet installed.")
+        pass
     def _get_installed_pip_packages():
         result = {}
         packages = {}
@@ -341,8 +349,7 @@ def install_python_deps():
         return result
 
     deps = {
-        "attrdict3": "==2.0.2",
-        "wxPython": "==4.2.0"
+        "wxPython": "==4.2.1"
     }
 
     installed_packages = _get_installed_pip_packages()

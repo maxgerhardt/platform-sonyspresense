@@ -25,10 +25,12 @@ jobs:
       # has a dependency on GTK+. Install it here.
       # the tool just uses it to show a EULA dialog,
       # so not critical, let's drop it later.. 
+      # Added fast install hack: Pull precompiled wheel directly from wxPython4
       - name: Install dependencies
         run: |
           if [ "$RUNNER_OS" == "Linux" ]; then
             sudo apt-get install -y libgtk-3-dev libgtk-4-dev python3-wxgtk4.0
+            sudo pip install -U -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-22.04/wxPython-4.2.1-cp310-cp310-linux_x86_64.whl wxPython
           fi
           pip install -U https://github.com/platformio/platformio/archive/develop.zip
           pio pkg install --global --platform symlink://.

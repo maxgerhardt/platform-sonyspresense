@@ -49,7 +49,7 @@
     "tool-spresense": {
       "type": "upload",
       "owner": "maxgerhardt",
-      "version": "https://github.com/maxgerhardt/spresense-tools-package.git#3.2.0"
+      "version": "https://github.com/maxgerhardt/spresense-tools-package.git#3.4.4"
     },
     "tool-openocd": {
       "type": "uploader",
